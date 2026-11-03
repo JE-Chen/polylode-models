@@ -16,12 +16,25 @@
           text-decoration: none; }
   .card img { display: block; width: 100%; aspect-ratio: 1200 / 630; object-fit: cover; }
   .card span { display: block; padding: 8px 12px; overflow-wrap: anywhere; }
+  #view { position: fixed; inset: 0; background: #1e2129; }
+  #view model-viewer { width: 100%; height: 100%; }
+  #view .bar { position: fixed; top: 10px; left: 12px; display: flex; gap: 10px; align-items: center; z-index: 1; }
+  #view button, #view select { background: #262a33; color: inherit; border: 1px solid #3a3f4b; border-radius: 6px;
+                               padding: 4px 10px; font: inherit; }
 </style>
+<script type="module" src="vendor/model-viewer-4.0.0.min.js"></script>
+<script type="module" src="site.js"></script>
 </head>
-<body>
+<body data-activity="636443597507395605">
 <h1>3D models</h1>
 <div class="grid">
-  <a class="card" href="models/c_cheyannessr01_slg_skin/"><img src="models/c_cheyannessr01_slg_skin/card.png" alt="" loading="lazy"><span>c_CheyanneSSR01_slg_skin</span></a>
+  <a class="card" href="models/c_cheyannessr01_slg_skin/" data-name="c_cheyannessr01_slg_skin"><img src="models/c_cheyannessr01_slg_skin/card.png" alt="" loading="lazy"><span>c_CheyanneSSR01_slg_skin</span></a>
 </div>
+<section id="view" hidden>
+  <div class="bar"><button id="back">← All models</button><label class="poses" hidden>Pose <select id="pose"></select></label></div>
+  <model-viewer camera-controls auto-rotate auto-rotate-delay="0" rotation-per-second="20deg" touch-action="none"
+                interaction-prompt="none" environment-image="neutral" exposure="1" shadow-intensity="0.6"
+                autoplay></model-viewer>
+</section>
 </body>
 </html>

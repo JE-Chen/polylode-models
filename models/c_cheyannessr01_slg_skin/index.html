@@ -14,7 +14,7 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#2f6feb">
-<script type="module" src="https://cdn.jsdelivr.net/npm/@google/model-viewer@4.0.0/dist/model-viewer.min.js"></script>
+<script type="module" src="../../vendor/model-viewer-4.0.0.min.js"></script>
 <style>
   html, body { margin: 0; height: 100%; background: #1e2129; color: #e6e8ee;
                font: 15px/1.5 system-ui, "Segoe UI", "Microsoft JhengHei", sans-serif; }
@@ -24,6 +24,7 @@
   header h1 { font-size: 17px; margin: 0; font-weight: 600; overflow-wrap: anywhere; }
   header a { color: #8ab4ff; pointer-events: auto; font-size: 13px; }
   .hint { position: fixed; bottom: 10px; left: 0; right: 0; text-align: center; color: #9aa0ad; font-size: 13px; }
+  [hidden] { display: none !important; }   /* a picker laid out with display: flex shows through hidden otherwise */
   .poses { position: fixed; top: 52px; left: 16px; display: flex; gap: 8px; align-items: center; font-size: 14px; }
   .poses select { background: #262a33; color: inherit; border: 1px solid #3a3f4b; border-radius: 6px;
                   padding: 4px 8px; font: inherit; max-width: 70vw; }
