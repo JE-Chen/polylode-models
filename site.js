@@ -23,14 +23,24 @@ if (app && params.has("frame_id")) {
   const viewer = view.querySelector("model-viewer");
   const box = view.querySelector(".poses");
   const pick = document.getElementById("pose");
+  // poses and expressions (animations named "expression/…") listed apart; one plays at a time
+  const faces = view.querySelector(".faces");
+  const face = document.getElementById("face");
+  const show = (name) => { viewer.animationName = name; viewer.currentTime = 0; viewer.play(); };
   viewer.addEventListener("load", () => {
     pick.replaceChildren();
+    face.replaceChildren(new Option("—", ""));
     const names = viewer.availableAnimations;
-    box.hidden = !names.length;
-    for (const name of names) pick.add(new Option(name, name));
-    if (names.length) { viewer.animationName = names[0]; viewer.play(); }
+    const poses = names.filter((name) => !name.startsWith("expression/"));
+    const looks = names.filter((name) => name.startsWith("expression/"));
+    box.hidden = !poses.length;
+    faces.hidden = !looks.length;
+    for (const name of poses) pick.add(new Option(name, name));
+    for (const name of looks) face.add(new Option(name.slice("expression/".length), name));
+    if (poses.length) show(poses[0]);
   });
-  pick.addEventListener("change", () => { viewer.animationName = pick.value; viewer.currentTime = 0; viewer.play(); });
+  pick.addEventListener("change", () => { face.value = ""; show(pick.value); });
+  face.addEventListener("change", () => show(face.value || pick.value));
   for (const card of document.querySelectorAll("a.card")) {
     card.addEventListener("click", (event) => {
       event.preventDefault();
