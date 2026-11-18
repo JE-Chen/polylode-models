@@ -21,11 +21,13 @@
   #view .bar { position: fixed; top: 10px; left: 12px; display: flex; gap: 10px; align-items: center; z-index: 1; }
   #view button, #view select { background: #262a33; color: inherit; border: 1px solid #3a3f4b; border-radius: 6px;
                                padding: 4px 10px; font: inherit; }
+  #view .light { display: flex; gap: 6px; align-items: center; }
+  #view .light input { width: 110px; accent-color: #2f6feb; }
 </style>
-<script type="module" src="vendor/model-viewer-4.0.0.min.js"></script>
+<script type="module" src="vendor/model-viewer-4.1.0.min.js"></script>
 <script type="module" src="site.js"></script>
 </head>
-<body data-activity="636443597507395605">
+<body data-activity="">
 <h1>3D models</h1>
 <div class="grid">
   <a class="card" href="models/r2t1younuomd10011/" data-name="r2t1younuomd10011"><img src="models/r2t1younuomd10011/card.png" alt="" loading="lazy"><span>R2T1YounuoMd10011</span></a>
@@ -51,7 +53,9 @@
 </div>
 <section id="view" hidden>
   <div class="bar"><button id="back">← All models</button><label class="poses" hidden>Pose <select id="pose"></select></label>
-    <label class="faces" hidden>Expression <select id="face"></select></label></div>
+    <label class="faces" hidden>Expression <select id="face"></select></label>
+    <label class="light" title="How bright the model is lit">Light <input id="light" type="range" min="0.2" max="3"
+      step="0.05" value="1"></label></div>
   <model-viewer camera-controls touch-action="none"
                 interaction-prompt="none" environment-image="neutral" exposure="1" shadow-intensity="0.6"
                 autoplay></model-viewer>
